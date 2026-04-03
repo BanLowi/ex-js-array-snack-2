@@ -60,6 +60,7 @@ const longBooksTitles = longBooks.map(book => book.title)
 console.log(longBooksTitles);
 
 
+
 /* 
 Snack 2 - Il primo libro scontato
 Creare un array (availableBooks) che contiene tutti i libri disponibili.
@@ -70,12 +71,13 @@ Salva in una variabile (fullPricedBook) il primo elemento di discountedBooks che
 const availableBooks = books.filter(book => book.available = true);
 console.log("isAvailable:", availableBooks);
 
-
 const discountedBooks = availableBooks.map(book => {
 
-    const discountedPrice = ( / 100) * 20;
+    const { price } = book;
 
-    return discountedPrice
+    const parsedPrice = parseInt(price);
+
+    return parsedPrice - (parsedPrice / 100) * 20;
+
 })
-console.log("Price:", discountedBooks);
-
+console.log(discountedBooks);
