@@ -54,10 +54,10 @@ Stampa in console ogni titolo nella console.
 */
 
 const longBooks = books.filter(book => book.pages >= 300);
-console.log(longBooks);
+console.log("Long Books:", longBooks);
 
-const longBooksTitles = longBooks.map(book => book.title)
-console.log(longBooksTitles);
+const longBooksTitles = longBooks.map(book => book.title);
+console.log("Long Books Title:", longBooksTitles);
 
 
 
@@ -81,10 +81,38 @@ const discountedBooks = availableBooks.map(book => {
 
     return { ...book, price: result }
 
-})
+});
 console.log("Books with a discounted price:", discountedBooks);
 
-const fullPriceBook = discountedBooks.find(book => parseFloat(book.price) % 1 === 0)
+const fullPriceBook = discountedBooks.find(book => parseFloat(book.price) % 1 === 0);
 
 console.log("Full price book:", fullPriceBook);
 
+/*
+Snack 3 - Ordinare gli Autori
+Creare un array (authors) che contiene gli autori dei libri.
+Crea una variabile booleana (areAuthorsAdults) per verificare se gli autori sono tutti maggiorenni.
+Ordina l’array authors in base all’età, senza creare un nuovo array.
+(se areAuthorsAdult è true, ordina in ordine crescente, altrimenti in ordine decrescente) 
+*/
+
+const authors = books.map(book => book.author);
+console.log("Authors Array:", authors);
+
+const areAuthorsAdult = authors.every(author => author.age >= 18);
+console.log("Are authors adults?", areAuthorsAdult);
+
+if (!areAuthorsAdult) {
+
+    authors.sort((a, b) => {
+        return b.age - a.age
+    })
+
+} else {
+
+    authors.sort((a, b) => {
+        return a.age - b.age
+    })
+}
+
+console.log(authors);
