@@ -76,12 +76,15 @@ const discountedBooks = availableBooks.map(book => {
     const { price } = book;
 
     const parsedPrice = parseInt(price);
-    console.log(parsedPrice);
-
     const discountedPrice = parsedPrice - (parsedPrice / 100) * 20;
     const result = String(discountedPrice.toFixed(2)) + "€";
 
     return { ...book, price: result }
 
 })
-console.log(discountedBooks);
+console.log("Books with a discounted price:", discountedBooks);
+
+const fullPriceBook = discountedBooks.find(book => parseFloat(book.price) % 1 === 0)
+
+console.log("Full price book:", fullPriceBook);
+
